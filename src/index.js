@@ -11,7 +11,7 @@ const {
 	UniqueID
 } = require('nodejs-snowflake');
 const snowflake = new UniqueID({
-	customEpoch: snowflakeObject.epoch, //(01-01-2021)
+	customEpoch: config.snowflakeObject.epoch,
 });
 const Database = require("@replit/database")
 const db = new Database()
@@ -28,6 +28,16 @@ client
 	.on("warn", console.log)
 
 client.on("ready", async () => {
+  b = {name:"eval",description:"Evaluates code for testing",options:[{type:3,name:"code",description:"Code to evaluate",required:!0}]}
+fetch(`https://discord.com/api/applications/${client.user.id}/commands`, {
+				method: 'post',
+				body: JSON.stringify(b),
+				headers: {
+					Authorization: "Bot " + client.token, //API key here
+					'Content-Type': 'application/json'
+				},
+			})
+			.then(res => res.json()).then(a => console.log(a))
 	client.user.setStatus(presence.status)
 	setInterval(async () => {
 		const statuslist = presence.activities
@@ -53,7 +63,7 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
 	const command = interaction.data.name
 	if (!client.commands.has(command)) return;
 	try {
-		client.commands.get(command).execute(client, Discord, db, config, fs, humanizeDuration);
+		client.commands.get(command).execute(interaction, client, Discord, db, config, fs, humanizeDuration);
 	} catch (error) {
 		console.error(error)
 		client.api.interactions(interaction.id)(interaction.token).callback.post({
