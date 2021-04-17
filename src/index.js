@@ -28,19 +28,40 @@ client
 	.on("warn", console.log)
 
 client.on("ready", async () => {
-  b = {name:"eval",description:"Evaluates code for testing",options:[{type:3,name:"code",description:"Code to evaluate",required:!0}]}
-fetch(`https://discord.com/api/applications/${client.user.id}/commands`, {
+  /*let b = {
+    name: "scanner",
+    description: "Token scanner basic settings",
+    options: [{
+      name: "status",
+      description: "Whether to turn the scanner on or off",
+      type:3, 
+      required:true,
+      choices: [{
+        name: "On",
+        value: "on"},
+      {
+        name:"Off",
+        value:"off"
+      }]
+    },
+    {
+      name: "regex",
+      description: "Regex for token scanner",
+      type:3,
+      required:false
+    }]
+  };
+  fetch(`https://discord.com/api/applications/${client.user.id}/commands`, {
 				method: 'post',
 				body: JSON.stringify(b),
 				headers: {
 					Authorization: "Bot " + client.token, //API key here
 					'Content-Type': 'application/json'
 				},
-			})
-			.then(res => res.json()).then(a => console.log(a))
-	client.user.setStatus(presence.status)
+			}).then(res => res.json()).then(a => console.log(a))*/
+	client.user.setStatus(config.presence.status)
 	setInterval(async () => {
-		const statuslist = presence.activities
+		const statuslist = config.presence.activities
 		const random = Math.floor(Math.random() * statuslist.length);
 
 		try {

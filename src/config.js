@@ -1,7 +1,7 @@
 module.exports = {
   token: process.env.TOKEN,
   constants: {
-    "scanRegex": /[MNO][A-Za-z\d]{23}\.[\w-]{6}\.[\w-]{27}/
+    scanRegex: /[MNO][A-Za-z\d]{23}\.[\w-]{6}\.[\w-]{27}/
   },
   snowflakeObject: {
     epoch: 1609459200000
