@@ -3,3 +3,6 @@
 
 # ENV
 *.env
+
+# Package
+package-lock.json
