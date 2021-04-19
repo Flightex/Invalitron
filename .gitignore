@@ -6,3 +6,6 @@
 
 # Package
 package-lock.json
+
+# GitHub
+*.gitconfig
