@@ -28,28 +28,53 @@ client
 	.on("warn", console.log)
 
 client.on("ready", async () => {
-  /*let b = {
-    name: "scanner",
-    description: "Token scanner basic settings",
-    options: [{
-      name: "status",
-      description: "Whether to turn the scanner on or off",
-      type:3, 
-      required:true,
-      choices: [{
-        name: "On",
-        value: "on"},
-      {
-        name:"Off",
-        value:"off"
-      }]
+  let b = /*{
+  "name": "config",
+  "description": "Set the config values for this scanner",
+  "options": [
+    {
+      "type": 1,
+      "name": "regex",
+      "description": "Regex for scanning",
+      "options": [
+        {
+          "type": 3,
+          "name": "value",
+          "description": "Regex value",
+          "default": false,
+          "required": true
+        }
+      ]
     },
     {
-      name: "regex",
-      description: "Regex for token scanner",
-      type:3,
-      required:false
-    }]
+      "type": 1,
+      "name": "delete",
+      "description": "Delete token if found",
+      "options": [
+        {
+          "type": 5,
+          "name": "value",
+          "description": "Whether to delete the token if found",
+          "default": false,
+          "required": true
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "name": "alert",
+      "description": "Alert's the poster if their token was found",
+      "options": [
+        {
+          "type": 5,
+          "name": "value",
+          "description": "Whether or not to alert the posting user their token was found",
+          "default": false,
+          "required": true
+        }
+      ]
+    }
+  ]
   };
   fetch(`https://discord.com/api/applications/${client.user.id}/commands`, {
 				method: 'post',

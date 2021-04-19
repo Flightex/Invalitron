@@ -5,7 +5,7 @@ module.exports = {
 		bot: "EMBED_LINKS"
 	},
 	async execute(interaction, client, Discord, db, config, fs, humanizeDuration) {
-    let member = client.guilds.cache.get(interaction.guild_id).member(interaction.user.id)
+    let member = await client.guilds.cache.get(interaction.guild_id).members.fetch(interaction.member.user.id)
     if (!member.hasPermission("MANAGE_GUILD")) {
       let embed = require("../Functions/permissionError.js").user(interaction, "Manage Server")
       client.api.interactions(interaction.id)(interaction.token).callback.post({
@@ -23,7 +23,9 @@ module.exports = {
 		if (check == undefined || check == null) {
 			let data = {
 				scanning: (value == "on") ? true : false,
-				regex: (regex == undefined) ? require("../config.js").constants.scanRegex : interaction.data.options[1].value
+				regex: ((regex == undefined) ? require("../config.js").constants.scanRegex : interaction.data.options[1].value),
+        deleteMessage: true,
+        alert: true
 			}
 			await db.set(`${interaction.guild_id}`, data)
 			let embed = new Discord.MessageEmbed()
@@ -53,7 +55,9 @@ module.exports = {
 			} else {
         let data = {
 					scanning: (value == "on") ? true : false,
-					regex: (regex == undefined) ? require("../config.js").constants.scanRegex : interaction.data.options[1].value
+					regex: ((regex == undefined) ? require("../config.js").constants.scanRegex : interaction.data.options[1].value),
+          deleteMessage: true,
+          alert: true
 				}
 				await db.set(`${interaction.guild_id}`, data)
 				let embed = new Discord.MessageEmbed()
