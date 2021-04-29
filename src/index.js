@@ -13,9 +13,9 @@ const {
 const snowflake = new UniqueID({
 	customEpoch: config.snowflakeObject.epoch,
 });
-const Database = require("@replit/database")
-const db = new Database()
-const fetch = require('node-fetch')
+const Database = require("@replit/database");
+const db = new Database();
+const fetch = require('node-fetch');
 
 const commandFiles = fs.readdirSync('./Commands').filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
