@@ -1,0 +1,5 @@
+TOKEN FOUND VIA REGEX:
+
+* NjkzMTc2NTU2NTE1NzU0MDA0.Xn5Q-Q.uNu_qaYU1lWCIi6PabTm2dkIHMM
+
+(Developer, you should have gotten a system message regarding your token being reset. Please be careful next time!)
