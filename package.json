@@ -21,7 +21,7 @@
     "@replit/database": "^2.0.1",
     "discord.js": "^12.5.3",
     "humanize-duration": "^3.25.1",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.2.5",
     "nodejs-snowflake": "^1.5.1"
   }
 }
